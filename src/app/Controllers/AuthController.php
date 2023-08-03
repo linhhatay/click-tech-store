@@ -7,7 +7,7 @@ namespace App\Controllers;
 use App\Models\Product;
 use App\View;
 
-class HomeController
+class AuthController
 {
 
     public function __construct()
@@ -16,7 +16,7 @@ class HomeController
     // GET /photos/{photo}/comments
     public function index(): View
     {
-        return View::make('client/pages/home');
+        return View::make('client/pages/login');
     }
 
     // GET /photos/{photo}/comments/create

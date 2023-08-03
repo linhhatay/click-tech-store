@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <header class="header"><?php include_once VIEW_PATH . './partials/header.php' ?></header>
+    <header class="header"><?php include_once VIEW_PATH . './admin/partials/header.php' ?></header>
     <main class="main">
         <?php require_once $viewPath ?>
     </main>

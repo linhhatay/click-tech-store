@@ -34,7 +34,7 @@ class View
 
         ob_start();
 
-        include '../views/layout.php';
+        include '../views/client/layout.php';
 
         return (string) ob_get_clean();
     }

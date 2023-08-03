@@ -3,6 +3,7 @@
 use App\App;
 use App\Config;
 use App\Container;
+use App\Controllers\AuthController;
 use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\CategoryController;
@@ -26,6 +27,9 @@ $web_root = str_replace('\\', '/', $web_root); // Chuyển đổi dấu gạch c
 define('_WEB_ROOT', $web_root);
 define('STORAGE_PATH', __DIR__ . '/../storage');
 define('VIEW_PATH', __DIR__ . '/../views');
+define('RESOURCES_PATH', __DIR__ . '/../resources');
+define('ADMIN_PATH', VIEW_PATH . '/admin');
+define('CLIENT_PATH', VIEW_PATH . '/client');
 
 // URL Route
 define('PRODUCT_URL', _WEB_ROOT . '/product');
@@ -64,11 +68,15 @@ $router
     )->post(
         _WEB_ROOT . '/categories/store',
         [CategoryController::class, 'store']
+    )->get(
+        _WEB_ROOT . '/tai-khoan',
+        [AuthController::class, 'index']
     );
 
 // echo '<pre>';
 // var_dump($router->routes());
 // echo '</pre>';
+
 
 (new App(
     $router,

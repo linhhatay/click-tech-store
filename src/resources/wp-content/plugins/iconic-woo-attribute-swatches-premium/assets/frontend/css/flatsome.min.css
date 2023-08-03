@@ -1,0 +1,28 @@
+.iconic-was-swatches {
+    margin: 0
+}
+
+.product-small .iconic-was-swatches {
+    margin-bottom: 1em
+}
+
+.iconic-was-swatches li {
+    margin: 0 10px 10px 0 !important
+}
+
+body .product-summary table tr+tr {
+    border-top: none
+}
+
+body .variations tr:last-child {
+    margin: 0;
+    padding-top: 10px
+}
+
+body .variations .reset_variations {
+    top: .2em;
+    bottom: auto;
+    width: auto;
+    margin: 0;
+    line-height: 1.3
+}
