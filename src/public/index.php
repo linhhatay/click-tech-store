@@ -45,7 +45,7 @@ $router
         _WEB_ROOT,
         [HomeController::class, 'index']
     )->get(
-        _WEB_ROOT . '/product',
+        _WEB_ROOT . 'admin/product',
         [ProductController::class, 'index']
     )->get(
         _WEB_ROOT . '/product/create',
@@ -59,7 +59,10 @@ $router
     )->delete(
         _WEB_ROOT . '/product/{id}',
         [ProductController::class, 'destroy']
-    )->get(
+    );
+
+$router
+    ->get(
         _WEB_ROOT . '/categories',
         [CategoryController::class, 'index']
     )->get(
@@ -68,15 +71,21 @@ $router
     )->post(
         _WEB_ROOT . '/categories/store',
         [CategoryController::class, 'store']
-    )->get(
+    );
+
+// Route login
+$router
+    ->get(
         _WEB_ROOT . '/tai-khoan',
         [AuthController::class, 'index']
+    )->post(
+        _WEB_ROOT . '/tai-khoan',
+        [AuthController::class, 'login']
     );
 
 // echo '<pre>';
 // var_dump($router->routes());
 // echo '</pre>';
-
 
 (new App(
     $router,

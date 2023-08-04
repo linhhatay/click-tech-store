@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Session
 {
     protected static $instance;
@@ -13,7 +15,7 @@ class Session
         return self::$instance;
     }
 
-    public function put($key, $value)
+    public function set($key, $value)
     {
         $_SESSION[$key] = $value;
     }
@@ -33,6 +35,18 @@ class Session
         unset($_SESSION[$key]);
     }
 
+    public static function flash($key, $value)
+    {
+        $_SESSION[$key] = $value;
+    }
+
+    public static function getFlash($key, $default = null)
+    {
+        $value = self::get($key, $default);
+        self::remove($key);
+        return $value;
+    }
+
     public function all()
     {
         return $_SESSION;
@@ -43,5 +57,20 @@ class Session
         session_unset();
         session_destroy();
         self::$instance = null;
+    }
+
+    public function flashInput($data)
+    {
+        $_SESSION['_old_input'] = $data;
+    }
+
+    public function old($key, $default = null)
+    {
+        if (isset($_SESSION['_old_input'][$key])) {
+            $value = $_SESSION['_old_input'][$key];
+            unset($_SESSION['_old_input'][$key]);
+            return $value;
+        }
+        return $default;
     }
 }

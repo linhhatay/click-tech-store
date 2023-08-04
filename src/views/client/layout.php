@@ -532,7 +532,7 @@
 </head>
 
 <body class="home page-template page-template-page-blank page-template-page-blank-php page page-id-124 theme-flatsome ot-vertical-menu ot-overplay woocommerce-no-js yith-wcan-pro full-width header-shadow lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border">
-    <div class="wrapper">
+    <div id="wrapper">
         <?php include_once VIEW_PATH . '/client/partials/header.php' ?>
         <?php
         // require_once './pages/login.php'

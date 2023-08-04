@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Models\Product;
+use App\Models\Admin;
+use App\Request;
+use App\Response;
+use App\Session;
+use App\Validator;
 use App\View;
 
 class AuthController
 {
 
-    public function __construct()
+    public function __construct(private Admin $adminModel, private Request $request, private Response $response)
     {
     }
     // GET /photos/{photo}/comments
@@ -19,34 +23,32 @@ class AuthController
         return View::make('client/pages/login');
     }
 
-    // GET /photos/{photo}/comments/create
-    public function create(): View
+    public function login()
     {
-        return View::make('admin/product/create');
-    }
+        $data = $this->request->all();
+        $username = $this->request->input('username');
+        $password = $this->request->input('password');
 
-    // POST /photos/{photo}/comments
-    public function store()
-    {
-    }
+        $rules = [
+            'username' => 'required',
+            'password' => 'required|min:6',
+        ];
 
-    // GET /comments/{comment}
-    public function show()
-    {
-    }
+        $validator = new Validator($data, $rules);
+        $session = Session::getInstance();
+        $session->flashInput($data);
 
-    // GET /comments/{comment}/edit
-    public function edit()
-    {
-    }
-
-    // PUT/PATCH /comments/{comment}
-    public function update()
-    {
-    }
-
-    // DELETE /comments/{comment}
-    public function destroy()
-    {
+        if ($validator->validate()) {
+            try {
+                $admin =  $this->adminModel->login($username, $password);
+                $admin && $this->response->redirect(_WEB_ROOT);
+            } catch (\Exception $e) {
+                $errors = ['login' => [$e->getMessage()]];
+                return View::make('client/pages/login', ['errors' => $errors]);
+            }
+        } else {
+            $errors = $validator->errors();
+            return View::make('client/pages/login', ['errors' =>  $errors]);
+        }
     }
 }

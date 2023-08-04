@@ -49,7 +49,7 @@ class CategoryController
             $categoryId = $this->categoryModel->create($categoryName, $categoryParent);
             if ($categoryId) {
                 // $this->response->redirect(_WEB_ROOT . '/categories/create');
-                return View::make('admin/category/create', ['messages' =>  'Thêm danh mục thành công !']);
+                return View::make('admin/category/create', ['messages' => 'Thêm danh mục thành công !']);
             }
         } else {
             $errors = $validator->errors();

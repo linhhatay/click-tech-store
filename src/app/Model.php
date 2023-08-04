@@ -12,4 +12,15 @@ abstract class Model
     {
         $this->db = App::db();
     }
+
+    protected function query(string $query, array $params = [])
+    {
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->execute($params);
+            return $stmt;
+        } catch (\PDOException $e) {
+            die("Query execution failed: " . $e->getMessage());
+        }
+    }
 }

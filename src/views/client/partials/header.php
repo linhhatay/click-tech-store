@@ -5,7 +5,7 @@
                 <!-- Logo -->
                 <div id="logo" class="flex-col logo">
                     <!-- Header logo -->
-                    <a href="https://phukienabc.com/" title="Phụ Kiện ABC - Thế giới phụ kiện không giới hạn" rel="home">
+                    <a href="<?= _WEB_ROOT ?>" title="Phụ Kiện ABC - Thế giới phụ kiện không giới hạn" rel="home">
                         <img width="200" height="80" src="https://phukienabc.com/wp-content/uploads/2022/10/phukienabc.svg" class="header_logo header-logo" alt="Phụ Kiện ABC" /><img width="200" height="80" src="https://phukienabc.com/wp-content/uploads/2022/10/phukienabc.svg" class="header-logo-dark" alt="Phụ Kiện ABC" /></a>
                     <div id="mega-menu-wrap" class="ot-vm-hover">
                         <div id="mega-menu-title" class="hide-for-medium">
@@ -326,7 +326,7 @@
                         <li class="header-search-form search-form html relative has-icon">
                             <div class="header-search-form-wrapper">
                                 <div class="searchform-wrapper ux-search-box relative is-normal">
-                                    <form role="search" method="get" class="searchform" action="https://phukienabc.com/">
+                                    <form role="search" method="get" class="searchform" action="<?php _WEB_ROOT ?>">
                                         <div class="flex-row relative">
                                             <div class="flex-col flex-grow">
                                                 <label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
