@@ -9,9 +9,15 @@
 </head>
 
 <body>
-    <header class="header"><?php include_once VIEW_PATH . './admin/partials/header.php' ?></header>
+    <header class="header">
+        <?php
+        include  VIEW_PATH . '/admin/partials/header.php';
+        ?>
+    </header>
     <main class="main">
-        <?php require_once $viewPath ?>
+        <?php
+        include $viewPath;
+        ?>
     </main>
     <footer class="footer">Đây là footer</footer>
     <!-- <script src="../resources/js/app.js"></script> -->

@@ -6,28 +6,19 @@ namespace App\Models;
 
 use App\Model;
 
-class Product extends Model
+class Attribute extends Model
 {
     public function get($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM products WHERE id = ?");
-        $stmt->execute([$id]);
-
-        return $stmt->fetch();
     }
 
     public function getAll()
     {
-        $stmt = $this->db->prepare("SELECT * FROM products");
-
-        $stmt->execute();
-
-        return  $stmt->fetchAll();
     }
 
-    public function create(string $productName, string $description, float $price, int $stockQuantity,): int
+    public function create(string $attributeName): int
     {
-        $stmt = $this->query("INSERT INTO products(product_name, description, price, stock_quantity) VALUES(?, ?, ?, ?)", [$productName, $description, $price, $stockQuantity]);
+        $stmt = $this->query("INSERT INTO attributes(attribute_name) VALUES(?)", [$attributeName]);
         return (int) $this->db->lastInsertId();
     }
 

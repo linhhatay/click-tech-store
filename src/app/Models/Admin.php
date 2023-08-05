@@ -13,7 +13,7 @@ class Admin extends Model
 {
     public function login(string $username, string $password)
     {
-        $stmt = $this->db->prepare("SELECT * FROM admins WHERE username = :username");
+        // $stmt = $this->db->prepare("SELECT * FROM admins WHERE username = :username");
         $stmt = $this->query("SELECT * FROM admins WHERE username = :username", [':username' => $username]);
         $admin = $stmt->fetch();
 

@@ -83,6 +83,12 @@ $router
         [AuthController::class, 'login']
     );
 
+$router
+    ->get(
+        _WEB_ROOT . '/{slug}',
+        [ProductController::class, 'show']
+    );
+
 // echo '<pre>';
 // var_dump($router->routes());
 // echo '</pre>';
